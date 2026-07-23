@@ -7,7 +7,7 @@
 
 /* —— body + fonts —— */
 body {
-  font-family: "Montserrat", Arial, Helvetica, sans-serif;
+  font-family: "Inter", Arial, Helvetica, sans-serif;
   color: #333;
   display: flex;
   justify-content: center;
@@ -31,6 +31,7 @@ body {
 }
 
 .site-title {
+  font-family: "Manrope", Arial, Helvetica, sans-serif;
   font-size: 22px;
   font-weight: 500;
   margin-bottom: 10px;
@@ -81,6 +82,14 @@ body {
   margin-bottom: 20px;
 }
 
+.assistant-paragraph {
+  margin-bottom: 1rem;
+}
+
+.assistant-list {
+  margin: 0 0 1rem 1rem;
+}
+
 /* placeholder message */
 .placeholder-message {
   width: 100%;
@@ -113,7 +122,7 @@ body {
 
 .chat-form button {
   font-size: 18px;
-  background: #000;
+  background: #ff003b;
   color: #fff;
   border: none;
   padding: 12px;
@@ -127,7 +136,7 @@ body {
 }
 
 .chat-form button:hover {
-  background: #666666;
+  background: #d60032;
 }
 
 .chat-form button:focus {
@@ -186,6 +195,29 @@ body {
   display: flex;
   gap: 15px;
   min-height: 160px;
+  cursor: pointer;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
+  position: relative;
+}
+
+.product-card:hover,
+.product-card:focus-within {
+  border-color: #ff003b;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transform: translateY(-2px);
+}
+
+.product-card:focus {
+  outline: 3px solid #ff003b;
+  outline-offset: 3px;
+}
+
+.product-card.selected {
+  border: 2px solid #ff003b;
+  box-shadow: 0 0 0 2px rgba(255, 0, 59, 0.15);
 }
 
 .product-card img {
@@ -213,6 +245,24 @@ body {
   color: #666;
 }
 
+.product-card .product-description {
+  margin-top: 8px;
+  line-height: 1.45;
+  color: #444;
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  display: block;
+  transition: opacity 0.2s ease, max-height 0.2s ease;
+}
+
+.product-card:hover .product-description,
+.product-card:focus-within .product-description {
+  opacity: 1;
+  max-height: 400px;
+  overflow: visible;
+}
+
 /* selected products */
 .selected-products {
   margin: 40px 0;
@@ -228,8 +278,42 @@ body {
 
 #selectedProductsList {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   gap: 10px;
+}
+
+.selected-product-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 12px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  background: #fff;
+}
+
+.remove-product-btn {
+  border: none;
+  background: #ff003b;
+  color: #fff;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.clear-btn {
+  width: 100%;
+  margin-top: 12px;
+  padding: 12px;
+  font-size: 16px;
+  font-weight: 500;
+  color: #ff003b;
+  background: #fff;
+  border: 1px solid #ff003b;
+  border-radius: 8px;
+  cursor: pointer;
 }
 
 .generate-btn {
@@ -239,7 +323,7 @@ body {
   font-size: 18px;
   font-weight: 500;
   color: #fff;
-  background: #000;
+  background: #ff003b;
   border: none;
   border-radius: 8px;
   cursor: pointer;
@@ -247,7 +331,7 @@ body {
 }
 
 .generate-btn:hover {
-  background: #666;
+  background: #d60032;
 }
 
 .generate-btn i {
